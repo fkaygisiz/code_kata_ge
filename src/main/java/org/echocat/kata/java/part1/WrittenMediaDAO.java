@@ -19,5 +19,11 @@ public abstract class WrittenMediaDAO extends DAO<WrittenMedia> {
 			filter(a->a.equalsIgnoreCase(email))
 			.collect(Collectors.toList()).size()>0).collect(Collectors.toList());
 	}
+	
+	public List<WrittenMedia> findByIsbn(String isdn) {
+		
+		return items.stream().
+			filter(a->a.getIsbn().equalsIgnoreCase(isdn)).collect(Collectors.toList());
+	}
 
 }
