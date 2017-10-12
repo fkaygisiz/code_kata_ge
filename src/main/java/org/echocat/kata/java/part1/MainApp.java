@@ -4,6 +4,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
+import org.echocat.kata.java.part1.dao.AuthorDAO;
+import org.echocat.kata.java.part1.dao.BookDAO;
+import org.echocat.kata.java.part1.dao.DAO;
+import org.echocat.kata.java.part1.dao.MagazineDAO;
+import org.echocat.kata.java.part1.dao.WrittenMediaDAO;
 import org.echocat.kata.java.part1.model.Author;
 import org.echocat.kata.java.part1.model.WrittenMedia;
 
@@ -15,11 +20,11 @@ public class MainApp {
 		DAO<Author> ad = new AuthorDAO("org/echocat/kata/java/part1/data/authors.csv");
 		ad.getAll();
 		WrittenMediaDAO bd = new BookDAO("org/echocat/kata/java/part1/data/books.csv");
-		List<WrittenMedia> books = bd.getAll();
+//		List<WrittenMedia> books = bd.getAll();
 
 		WrittenMediaDAO md = new MagazineDAO("org/echocat/kata/java/part1/data/magazines.csv");
-		List<WrittenMedia> magaazines = md.getAll();
-		books.addAll(magaazines);
+//		List<WrittenMedia> magaazines = md.getAll();
+		bd.addAll(md.getAll());
 
 		while (true) {
 			Scanner scanner = new Scanner(System.in);
@@ -35,7 +40,7 @@ public class MainApp {
 				System.out.print("Write email :");
 				String email = scanner.next();
 				List<WrittenMedia> findByAuthorEmail = bd.findByAuthorEmail(email);
-				findByAuthorEmail.addAll(md.findByAuthorEmail(email));
+//				findByAuthorEmail.addAll(md.findByAuthorEmail(email));
 
 				findByAuthorEmail.stream().sorted(Comparator.comparing(WrittenMedia::getTitle))
 						.forEach(System.out::println);
@@ -43,9 +48,9 @@ public class MainApp {
 				System.out.print("Write isbn :");
 				String isbn = scanner.next();
 				List<WrittenMedia> findByIsbn = bd.findByIsbn(isbn);
-				findByIsbn.addAll(md.findByAuthorEmail(isbn));
+//				findByIsbn.addAll(md.findByAuthorEmail(isbn));
 
-				findByIsbn.stream().sorted(Comparator.comparing(WrittenMedia::getTitle)).forEach(System.out::println);
+				findByIsbn.stream().distinct().sorted(Comparator.comparing(WrittenMedia::getTitle)).forEach(System.out::println);
 			}
 		}
 

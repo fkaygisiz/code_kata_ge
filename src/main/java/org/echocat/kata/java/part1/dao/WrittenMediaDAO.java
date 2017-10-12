@@ -1,4 +1,4 @@
-package org.echocat.kata.java.part1;
+package org.echocat.kata.java.part1.dao;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,6 +24,10 @@ public abstract class WrittenMediaDAO extends DAO<WrittenMedia> {
 		
 		return items.stream().
 			filter(a->a.getIsbn().equalsIgnoreCase(isdn)).collect(Collectors.toList());
+	}
+	
+	public void addAll(List<WrittenMedia> others) {
+		this.items.addAll(others);
 	}
 
 }

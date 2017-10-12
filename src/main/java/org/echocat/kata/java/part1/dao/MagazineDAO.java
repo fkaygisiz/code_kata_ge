@@ -1,4 +1,4 @@
-package org.echocat.kata.java.part1;
+package org.echocat.kata.java.part1.dao;
 
 import java.util.stream.Collectors;
 

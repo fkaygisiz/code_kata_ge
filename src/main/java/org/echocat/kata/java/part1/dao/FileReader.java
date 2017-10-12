@@ -1,4 +1,4 @@
-package org.echocat.kata.java.part1;
+package org.echocat.kata.java.part1.dao;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import org.echocat.kata.java.part1.MainApp;
 
 public class FileReader {
 
